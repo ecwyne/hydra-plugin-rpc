@@ -1,0 +1,36 @@
+{
+  "name": "hydra-rpc",
+  "version": "0.0.1",
+  "description": "simple distrubuted RPC using Hydra",
+  "main": "index.js",
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecwyne/hydra-rpc.git"
+  },
+  "keywords": [
+    "hydra",
+    "microservices",
+    "rpc"
+  ],
+  "author": "Eric Wyne <ecwyne@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecwyne/hydra-rpc/issues"
+  },
+  "homepage": "https://github.com/ecwyne/hydra-rpc#readme",
+  "dependencies": {
+    "didyoumean": "^1.2.1",
+    "hydra": "^1.1.2",
+    "ramda": "^0.23.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}
