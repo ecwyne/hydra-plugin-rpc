@@ -36,7 +36,8 @@ hydra.use(new HydraRPC());
 
 hydra.init({...}).then(() => {
   hydra.methods({
-    ping: () => 'pong';
+    ping: () => 'pong',
+    sleepPing: delay => Promise.resolve('pong').delay(delay) // optionally return promises
   });
 });
 ```
@@ -50,6 +51,7 @@ hydra.use(new HydraRPC());
 
 hydra.init({...}).then(() => {
   hydra.call('ping').then(result => console.log(result)); // Logs "pong"!
+  hydra.call('sleepPing', 1000).then(result => console.log(result)); // Result comes back after 1000 ms!
 });
 ```
 
