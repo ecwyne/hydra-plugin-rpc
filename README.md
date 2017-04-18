@@ -1,4 +1,5 @@
 # Hydra-RPC (WIP)
+Create and consume remote procedure calls in hydra with ease.
 ## Requirements
 Hydra-RPC requires node >= 7.6 as it uses async/await.
 ## Install
@@ -26,13 +27,36 @@ hydra.call('methodName', arg1, arg2, arg3).then(...);
 
 ## Example
 ```javascript
+// Service1.js
 const hydra = require('hydra');
 const HydraRPC = require('hydra-rpc'); // not published yet
 const Promise = require('bluebird');
 
 hydra.use(new HydraRPC());
 
-hydra.init({
+hydra.init({...}).then(() => {
+  hydra.methods({
+    ping: () => 'pong';
+  });
+});
+```
+
+```javascript
+// Service2.js (even works on separate machines!)
+const hydra = require('hydra');
+const HydraRPC = require('hydra-rpc'); // not published yet
+
+hydra.use(new HydraRPC());
+
+hydra.init({...}).then(() => {
+  hydra.call('ping').then(result => console.log(result)); // Logs "pong"!
+});
+```
+
+Config object must have hydra.plugins.hydra-rpc [for now](https://github.com/flywheelsports/hydra/pull/85)
+```javascript
+// config.js
+module.exports = {
   hydra: {
     serviceName: 'hydra-rpc-example',
     serviceIP: '',
@@ -47,15 +71,5 @@ hydra.init({
         'hydra-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
       }
   }
-}).then(() => {
-  hydra.methods({
-    ping: () => 'pong';
-  });
-});
-
-setInterval(() => {
-  hydra.call('ping')
-    .then(result => console.log(result))
-    .catch(err => console.log(err));
-}, 2000);
+}
 ```
