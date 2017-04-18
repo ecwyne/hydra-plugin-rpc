@@ -33,29 +33,29 @@ const Promise = require('bluebird');
 hydra.use(new HydraRPC());
 
 hydra.init({
-	hydra: {
-		serviceName: 'hydra-rpc-example',
-		serviceIP: '',
-		servicePort: 0,
-		serviceType: 'router',
-		serviceDescription: 'example for hydra-rpc plulgin',
-		redis: {
-			host: 'localhost',
-			db: 15
-		},
-		plugins: {
-			'hydra-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
-		}
-	}
+  hydra: {
+    serviceName: 'hydra-rpc-example',
+    serviceIP: '',
+    servicePort: 0,
+    serviceType: 'router',
+    serviceDescription: 'example for hydra-rpc plulgin',
+    redis: {
+      host: 'localhost',
+      db: 15
+    },
+      plugins: {
+        'hydra-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
+      }
+  }
 }).then(() => {
-	hydra.methods({
-		ping: () => 'pong';
-	});
+  hydra.methods({
+    ping: () => 'pong';
+  });
 });
 
 setInterval(() => {
-	hydra.call('ping')
-		.then(result => console.log(result))
-		.catch(err => console.log(err));
+  hydra.call('ping')
+    .then(result => console.log(result))
+    .catch(err => console.log(err));
 }, 2000);
 ```
