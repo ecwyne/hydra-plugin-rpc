@@ -1,7 +1,6 @@
 # Hydra-RPC (WIP)
 Create and consume remote procedure calls in hydra with ease.
-## Requirements
-Hydra-RPC requires node >= 7.6 as it uses async/await.
+
 ## Install
 Not published on npm yet, for now you'll need to clone the repo.
 ```shell

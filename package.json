@@ -2,12 +2,10 @@
   "name": "hydra-rpc",
   "version": "0.0.1",
   "description": "simple distrubuted RPC using Hydra",
-  "main": "index.js",
-  "engines": {
-    "node": ">=7.6.0"
-  },
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel --presets=es2017,stage-3 index.js --out-dir dist"
   },
   "repository": {
     "type": "git",
@@ -31,6 +29,10 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "eslint": "^3.19.0"
   }
 }
