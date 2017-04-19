@@ -1,5 +1,5 @@
 # Hydra-RPC (WIP)
-Create and consume remote procedure calls in hydra with ease.
+Create and consume [remote procedure calls](https://en.wikipedia.org/wiki/Remote_procedure_call) in hydra with ease.
 
 ## Install
 Not published on npm yet, for now you'll need to clone the repo.
