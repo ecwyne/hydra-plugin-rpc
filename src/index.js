@@ -30,7 +30,7 @@ class HydraRPC extends HydraPlugin {
 				});
 				sub.subscribe(`hydra-plugin-rpc:${hydra.getInstanceID()}`);
 			}
-		}
+		};
 
 		hydra.methods = obj => R.toPairs(obj).forEach(([methodName, fn]) => addMethod(methodName, fn));
 
@@ -41,7 +41,7 @@ class HydraRPC extends HydraPlugin {
 			initRPC();
 		};
 
-		const rand = (min, max) => Math.floor(Math.random() * (max - min)) + min
+		const rand = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 		hydra.call = async (methodName, ...args) => {
 			const id = uuid();
@@ -53,7 +53,7 @@ class HydraRPC extends HydraPlugin {
 				const suggest = closest ? `Did you mean "${closest}"?` : '';
 				throw new Error(`No Service registered for "${methodName}" method. ${suggest}`);
 			}
-			const publish = (instance) => hydra.redisdb.publishAsync(`hydra-plugin-rpc:${instance}`, JSON.stringify({id, methodName, args}));
+			const publish = instance => hydra.redisdb.publishAsync(`hydra-plugin-rpc:${instance}`, JSON.stringify({id, methodName, args}));
 			const result = new Promise((resolve, reject) => {
 				const sub = hydra.redisdb.duplicate();
 				sub.on('subscribe', async () => {
