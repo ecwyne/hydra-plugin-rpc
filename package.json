@@ -1,6 +1,6 @@
 {
   "name": "hydra-plugin-rpc",
-  "version": "0.0.2",
+  "version": "0.0.2-rc1",
   "description": "simple distributed RPC using Hydra",
   "main": "dist/index.js",
   "scripts": {
