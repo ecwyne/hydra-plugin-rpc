@@ -1,25 +1,26 @@
 const hydra = require('hydra');
-const HydraRPC = require('./index.js');
+const HydraRPC = require('./src/index.js');
 const Promise = require('bluebird');
 
 hydra.use(new HydraRPC());
 
 hydra.init({
 	hydra: {
-		serviceName: 'hydra-rpc-example',
+		serviceName: 'hydra-plugin-rpc-example',
 		serviceIP: '',
 		servicePort: 0,
 		serviceType: 'router',
-		serviceDescription: 'example for hydra-rpc plulgin',
+		serviceDescription: 'example for hydra-plugin-rpc plulgin',
 		redis: {
 			host: 'localhost',
 			db: 15
 		},
 		plugins: {
-			'hydra-rpc': {}
+			'hydra-plugin-rpc': {}
 		}
 	}
 }).then(() => {
+	console.log('Hydra Inialized');
 	hydra.methods({
 		ping: (...args) => Promise.resolve('pong ' + hydra.getInstanceID()).delay(200)
 	});

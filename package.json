@@ -1,15 +1,15 @@
 {
-  "name": "hydra-rpc",
+  "name": "hydra-plugin-rpc",
   "version": "0.0.1",
   "description": "simple distrubuted RPC using Hydra",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel --presets=es2017,stage-3 index.js --out-dir dist"
+    "prepublishOnly": "babel --presets=es2017,stage-3 src --out-dir dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ecwyne/hydra-rpc.git"
+    "url": "git+https://github.com/ecwyne/hydra-plugin-rpc.git"
   },
   "keywords": [
     "hydra",
@@ -19,9 +19,9 @@
   "author": "Eric Wyne <ecwyne@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ecwyne/hydra-rpc/issues"
+    "url": "https://github.com/ecwyne/hydra-plugin-rpc/issues"
   },
-  "homepage": "https://github.com/ecwyne/hydra-rpc#readme",
+  "homepage": "https://github.com/ecwyne/hydra-plugin-rpc#readme",
   "dependencies": {
     "didyoumean": "^1.2.1",
     "hydra": "^1.1.2",
@@ -29,7 +29,6 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",

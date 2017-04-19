@@ -1,10 +1,9 @@
-# Hydra-RPC (WIP)
+# Hydra-plugin-RPC
 Create and consume [remote procedure calls](https://en.wikipedia.org/wiki/Remote_procedure_call) in hydra with ease.
 
 ## Install
-Not published on npm yet, for now you'll need to clone the repo.
 ```shell
-$ git clone https://github.com/ecwyne/hydra-rpc
+$ npm i --save hydra-plugin-rpc
 ```
 ## Use
 Two methods are added to the hydra instance to add or consume methods
@@ -28,7 +27,7 @@ hydra.call('methodName', arg1, arg2, arg3).then(...);
 ```javascript
 // Service1.js
 const hydra = require('hydra');
-const HydraRPC = require('hydra-rpc'); // not published yet
+const HydraRPC = require('hydra-plugin-rpc');
 const Promise = require('bluebird');
 
 hydra.use(new HydraRPC());
@@ -44,7 +43,7 @@ hydra.init({...}).then(() => {
 ```javascript
 // Service2.js (even works on separate machines!)
 const hydra = require('hydra');
-const HydraRPC = require('hydra-rpc'); // not published yet
+const HydraRPC = require('hydra-plugin-rpc');
 
 hydra.use(new HydraRPC());
 
@@ -54,22 +53,22 @@ hydra.init({...}).then(() => {
 });
 ```
 
-Config object must have hydra.plugins.hydra-rpc [for now](https://github.com/flywheelsports/hydra/pull/85)
+Config object must have hydra.plugins.hydra-plugin-rpc [for now](https://github.com/flywheelsports/hydra/pull/85)
 ```javascript
 // config.js
 module.exports = {
   hydra: {
-    serviceName: 'hydra-rpc-example',
+    serviceName: 'hydra-plugin-rpc-example',
     serviceIP: '',
     servicePort: 0,
     serviceType: 'router',
-    serviceDescription: 'example for hydra-rpc plulgin',
+    serviceDescription: 'example for hydra-plugin-rpc plulgin',
     redis: {
       host: 'localhost',
       db: 15
     },
       plugins: {
-        'hydra-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
+        'hydra-plugin-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
       }
   }
 }

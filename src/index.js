@@ -8,7 +8,7 @@ const rpcKey = 'hydra:service:rpc:hash';
 
 class HydraRPC extends HydraPlugin {
 	constructor() {
-		super('hydra-rpc');
+		super('hydra-plugin-rpc');
 	}
 
 	setHydra(hydra) {
@@ -28,7 +28,7 @@ class HydraRPC extends HydraPlugin {
 					const data = await handler.apply(handler, args);
 					hydra.redisdb.publish(id, JSON.stringify({data}));
 				});
-				sub.subscribe(`hydra-rpc:${hydra.getInstanceID()}`);
+				sub.subscribe(`hydra-plugin-rpc:${hydra.getInstanceID()}`);
 			}
 		}
 
@@ -53,7 +53,7 @@ class HydraRPC extends HydraPlugin {
 				const suggest = closest ? `Did you mean "${closest}"?` : '';
 				throw new Error(`No Service registered for "${methodName}" method. ${suggest}`);
 			}
-			const publish = (instance) => hydra.redisdb.publishAsync(`hydra-rpc:${instance}`, JSON.stringify({id, methodName, args}));
+			const publish = (instance) => hydra.redisdb.publishAsync(`hydra-plugin-rpc:${instance}`, JSON.stringify({id, methodName, args}));
 			const result = new Promise((resolve, reject) => {
 				const sub = hydra.redisdb.duplicate();
 				sub.on('subscribe', async () => {
@@ -79,7 +79,6 @@ class HydraRPC extends HydraPlugin {
 
 	onServiceReady() {
 		Promise.promisifyAll(this.hydra.redisdb);
-		console.log(`[HydraRPC plugin] hydra service running on ${this.hydra.config.servicePort}`);
 	}
 }
 module.exports = HydraRPC;
