@@ -1,5 +1,5 @@
 # Hydra-plugin-RPC
-Create and consume [remote procedure calls](https://en.wikipedia.org/wiki/Remote_procedure_call) in hydra with ease.
+Create and consume [remote procedure calls](https://en.wikipedia.org/wiki/Remote_procedure_call) in [hydra](https://github.com/flywheelsports/hydra) with ease.
 
 ## Install
 ```shell
