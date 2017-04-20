@@ -52,24 +52,3 @@ hydra.init({...}).then(() => {
   hydra.call('sleepPing', 1000).then(result => console.log(result)); // Result comes back after 1000 ms!
 });
 ```
-
-Config object must have hydra.plugins.hydra-plugin-rpc [for now](https://github.com/flywheelsports/hydra/pull/85)
-```javascript
-// config.js
-module.exports = {
-  hydra: {
-    serviceName: 'hydra-plugin-rpc-example',
-    serviceIP: '',
-    servicePort: 0,
-    serviceType: 'router',
-    serviceDescription: 'example for hydra-plugin-rpc plulgin',
-    redis: {
-      host: 'localhost',
-      db: 15
-    },
-      plugins: {
-        'hydra-plugin-rpc': {} // required for now (see https://github.com/flywheelsports/hydra/pull/85)
-      }
-  }
-}
-```
