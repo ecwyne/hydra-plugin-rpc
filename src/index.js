@@ -1,5 +1,5 @@
 const Promise = require('bluebird');
-const HydraPlugin = require('hydra/plugin');
+const HydraPlugin = require('hydra-plugin');
 const R = require('ramda');
 const uuid = require('uuid/v1');
 const didyoumean = require('didyoumean');
